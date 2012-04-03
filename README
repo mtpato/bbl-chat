@@ -8,3 +8,8 @@ to connect to somone listening at the socket. if it doesnt find anyone listening
 it will connect to the socket and start listening. this way you dont need to worry 
 about starting up the server before the client. much easier. also it will make the code base 
 for the server and the client exactly the same.
+
+
+Im also thinking that i would like to work with c. the reason being i have just been doing a bunch o
+of socket programming with c and have it very fresh in my mind. we can talk about it but im 
+leaning towards c right now. 
