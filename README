@@ -1,2 +1,10 @@
 Hello, Mike!
 hey nick
+
+
+so nick i got a plan for this. he says he wants a seperate server and client. i think it 
+would be smarter to have them be the same. the program would just start by trying 
+to connect to somone listening at the socket. if it doesnt find anyone listening then 
+it will connect to the socket and start listening. this way you dont need to worry 
+about starting up the server before the client. much easier. also it will make the code base 
+for the server and the client exactly the same.
