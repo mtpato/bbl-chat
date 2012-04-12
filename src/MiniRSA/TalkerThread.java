@@ -1,5 +1,7 @@
 package MiniRSA;
 
+import java.util.Scanner;
+
 /**
  * @author michaelpato
  *
@@ -8,14 +10,41 @@ package MiniRSA;
  */
 public class TalkerThread extends Thread{
 
+    SocketConnector con;
+    boolean done = false; 
+    
+    public TalkerThread(SocketConnector con) {
+        this.con = con;
+    }
     
     /**
      * @see java.lang.Thread#run()
      */
     public void run() {
-        //call the function here
+        talk();
 
     }
+    
+    private void talk() {
+        Scanner scanner = new Scanner(System.in);    
+        while(!done) {
+             
+        String data = scanner.nextLine();
+        if("quit".equals(data)) {
+            done = true;
+        }
+        
+        con.sendMsg(data);
+        }
+    }
 
+    /**
+     * @param done the done to set
+     */
+    public void setDone(boolean done) {
+        this.done = done;
+        
+    }
 
+    
 }

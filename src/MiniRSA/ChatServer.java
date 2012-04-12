@@ -2,11 +2,13 @@ package MiniRSA;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.Scanner;
 
 public class ChatServer {
 
     ServerSocketConnector con;
     ListenerThread listener;
+    TalkerThread talker;
     
     
     /**
@@ -31,17 +33,28 @@ public class ChatServer {
         listener = new ListenerThread(con);
         listener.start();
         
-        //con.sendMsg("hello");
-        
-        con.sendMsg("server: talking to you ");
-        con.sendMsg("server: yap yap");
-        con.sendMsg("Server: im bored");
-        con.sendMsg("quit");
-        //con.sendMsg("quit");
-        //System.out.println(con.getReply());
+        talker = new TalkerThread(con);
+        talker.start();
 
+            
         
-        //System.out.println(con.getReply());
+        try {
+            talker.join();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        try {
+            listener.join();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        System.out.println("Thanks for using BBL-Chat!");
+        
+        
         System.out.println("done a");
         
     }

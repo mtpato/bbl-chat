@@ -9,7 +9,7 @@ package MiniRSA;
  */
 public class ListenerThread extends Thread{
     SocketConnector con;
-    
+    boolean done = false;
     
     public ListenerThread(SocketConnector con) {
         this.con = con;
@@ -23,7 +23,6 @@ public class ListenerThread extends Thread{
     }
     
     private void listen() {
-        boolean done = false;
 
         while(!done) {
             String data = con.getReply();
@@ -37,4 +36,12 @@ public class ListenerThread extends Thread{
         System.out.println("DONE");
         
     }
+    /**
+     * @param done the done to set
+     */
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+    
+    
 }

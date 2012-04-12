@@ -16,6 +16,7 @@ public class ChatClient{
 
     SocketConnector con;
     ListenerThread listener;
+    TalkerThread talker;
     
     /**
      * @param args
@@ -37,13 +38,26 @@ public class ChatClient{
         listener = new ListenerThread(con);
         listener.start();
         
+        talker = new TalkerThread(con);
+        talker.start();
 
-        //System.out.println(con.getReply());
-     
-        con.sendMsg("client: hello to you too");
-        con.sendMsg("client: you look nice");
-        con.sendMsg("client: oh thanks ");
-        con.sendMsg("quit");
+            
+        
+        try {
+            talker.join();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        try {
+            listener.join();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        System.out.println("Thanks for using BBL-Chat!");
         
         System.out.println("done b");
         
