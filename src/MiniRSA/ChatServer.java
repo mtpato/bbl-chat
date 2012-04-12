@@ -25,12 +25,13 @@ public class ChatServer {
         con.initCon();
         
         con.sendMsg("hello");
-
-        con.sendMsg("you are nice");
+        
+       /* con.sendMsg("you are nice");
         con.sendMsg("want to be friedns ");
         con.sendMsg("i do ");
-        con.sendMsg("see ya ");
+        con.sendMsg("see ya ");*/
         con.sendMsg("quit");
+        System.out.println(con.getReply());
 
         
         //System.out.println(con.getReply());

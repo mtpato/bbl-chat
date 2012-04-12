@@ -47,7 +47,7 @@ public class ChatClient{
             
             
         }
-            //con.sendMsg("hello to you too");
+            con.sendMsg("hello to you too");
         
         System.out.println("done b");
         
