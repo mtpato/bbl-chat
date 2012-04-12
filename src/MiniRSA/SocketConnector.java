@@ -2,6 +2,7 @@ package MiniRSA;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -15,12 +16,12 @@ import java.util.Scanner;
  */
 public class SocketConnector {
     int port;
-    InetAddress hostname;
+    String hostname;
     Scanner input;
     PrintWriter output;
-    Socket socket;
+    Socket socket = null;
     
-    public SocketConnector(int port, InetAddress hostname) {
+    public SocketConnector(int port, String hostname) {
         this.port = port;
         this.hostname = hostname;  
     }
@@ -33,7 +34,7 @@ public class SocketConnector {
     public void sendMsg(String msg) {
         if (msg != null && !msg.equals("")) {
 
-        	output.print(msg);
+        	output.print(msg + "\n");
         	output.flush();
         }
     }
@@ -58,6 +59,7 @@ public class SocketConnector {
     }
     
     
+
     /**
      * inits a connection with the server
      * 
@@ -65,9 +67,10 @@ public class SocketConnector {
      */
     public boolean initCon() {
         try {
-            String hostaddr = hostname.getHostAddress();
-            socket = new Socket(hostaddr, port);
-            
+            //String hostaddr = hostname.getHostAddress();
+
+            socket = new Socket(hostname, port);
+
             input = new Scanner(socket.getInputStream());
             output = new PrintWriter(socket.getOutputStream());
             return true;
