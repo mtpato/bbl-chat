@@ -9,7 +9,7 @@ package MiniRSA;
  */
 public class ListenerThread extends Thread{
     SocketConnector con;
-    boolean done = false;
+
     
     public ListenerThread(SocketConnector con) {
         this.con = con;
@@ -23,25 +23,25 @@ public class ListenerThread extends Thread{
     }
     
     private void listen() {
-
+        boolean done = false; 
         while(!done) {
             String data = con.getReply();
             if("quit".equals(data)) {
+                con.sendMsg("propQuit");//got to propagate the quit to kill all threads
                 done = true;
+                System.out.println("----Your buddy has quit.----");
+            } else if("propQuit".equals(data)){//got to propagate the quit to kill all threads
+                done = true;
+                con.sendMsg("propQuit");
+            } else {
+                System.out.println(data);
             }
 
-            System.out.println(data);
-                   
         }
-        System.out.println("DONE");
+        
         
     }
-    /**
-     * @param done the done to set
-     */
-    public void setDone(boolean done) {
-        this.done = done;
-    }
+   
     
     
 }

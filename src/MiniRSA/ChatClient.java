@@ -59,7 +59,7 @@ public class ChatClient{
         
         System.out.println("Thanks for using BBL-Chat!");
         
-        System.out.println("done b");
+        //System.out.println("done b");
         
         
     }

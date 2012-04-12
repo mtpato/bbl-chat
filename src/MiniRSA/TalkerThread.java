@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class TalkerThread extends Thread{
 
     SocketConnector con;
-    boolean done = false; 
+    
     
     public TalkerThread(SocketConnector con) {
         this.con = con;
@@ -26,24 +26,22 @@ public class TalkerThread extends Thread{
     }
     
     private void talk() {
-        Scanner scanner = new Scanner(System.in);    
+        Scanner scanner = new Scanner(System.in);  
+        boolean done = false; 
         while(!done) {
-             
-        String data = scanner.nextLine();
-        if("quit".equals(data)) {
-            done = true;
-        }
-        
-        con.sendMsg(data);
-        }
-    }
+          
+            String data = scanner.nextLine();
+            
+            if("quit".equals(data)) {
+                con.sendMsg("quit");//got to propagate the quit to kill all threads
+                done = true;
+            } else if("propQuit".equals(data)){//got to propagate the quit to kill all threads
+                done = true;
+            } else {
+                con.sendMsg(data);
+            }
 
-    /**
-     * @param done the done to set
-     */
-    public void setDone(boolean done) {
-        this.done = done;
-        
+        }
     }
 
     
