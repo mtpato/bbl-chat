@@ -33,10 +33,10 @@ public class ChatServer {
         
         //con.sendMsg("hello");
         
-       /* con.sendMsg("you are nice");
-        con.sendMsg("want to be friedns ");
-        con.sendMsg("i do ");
-        con.sendMsg("see ya ");*/
+        con.sendMsg("server: talking to you ");
+        con.sendMsg("server: yap yap");
+        con.sendMsg("Server: im bored");
+        con.sendMsg("quit");
         //con.sendMsg("quit");
         //System.out.println(con.getReply());
 

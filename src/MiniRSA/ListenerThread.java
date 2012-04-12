@@ -27,13 +27,14 @@ public class ListenerThread extends Thread{
 
         while(!done) {
             String data = con.getReply();
-            if(data.equals("quit")) {
+            if("quit".equals(data)) {
                 done = true;
             }
 
             System.out.println(data);
                    
         }
+        System.out.println("DONE");
         
     }
 }

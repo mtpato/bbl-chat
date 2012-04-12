@@ -15,6 +15,7 @@ import java.net.UnknownHostException;
 public class ChatClient{
 
     SocketConnector con;
+    ListenerThread listener;
     
     /**
      * @param args
@@ -33,12 +34,15 @@ public class ChatClient{
         System.out.println("about to conn");
         con.initCon();
         
+        listener = new ListenerThread(con);
+        listener.start();
+        
 
         //System.out.println(con.getReply());
      
-        con.sendMsg("hello to you too");
-        con.sendMsg("you look nice");
-        con.sendMsg("oh thanks ");
+        con.sendMsg("client: hello to you too");
+        con.sendMsg("client: you look nice");
+        con.sendMsg("client: oh thanks ");
         con.sendMsg("quit");
         
         System.out.println("done b");
