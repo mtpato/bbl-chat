@@ -8,13 +8,32 @@ package MiniRSA;
  *
  */
 public class ListenerThread extends Thread{
-
+    SocketConnector con;
     
+    
+    public ListenerThread(SocketConnector con) {
+        this.con = con;
+    }
     /**
      * @see java.lang.Thread#run()
      */
     public void run() {
-       //call the function here
+        listen();
 
+    }
+    
+    private void listen() {
+        boolean done = false;
+
+        while(!done) {
+            String data = con.getReply();
+            if(data.equals("quit")) {
+                done = true;
+            }
+
+            System.out.println(data);
+                   
+        }
+        
     }
 }

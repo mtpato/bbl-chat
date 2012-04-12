@@ -35,19 +35,11 @@ public class ChatClient{
         
 
         //System.out.println(con.getReply());
-        boolean done = false;
-        int g = 0;
-        while(!done) {
-            String data = con.getReply();
-            if(data.equals("quit")) {
-                done = true;
-            }
-
-            System.out.println(data);
-            
-            
-        }
-            con.sendMsg("hello to you too");
+     
+        con.sendMsg("hello to you too");
+        con.sendMsg("you look nice");
+        con.sendMsg("oh thanks ");
+        con.sendMsg("quit");
         
         System.out.println("done b");
         
