@@ -61,8 +61,7 @@ public class RSA {
             low = b;
             high = a;
         }
-              
-        
+                      
         long mod = high % low;
         
         while(mod != 0) {
@@ -86,6 +85,7 @@ public class RSA {
      */
     long mod_inverse(long base, long m) {
         
+        
         return -1;
     }
     
@@ -99,10 +99,10 @@ public class RSA {
      * @return
      */
     long modulo(long a, long b, long c) {
+        return (long) (Math.pow(a, b) % c);
         
         
         
-        return -1;
     }
     
     

@@ -54,15 +54,18 @@ public class RSATest {
         
     }
 
+
     /**
-     * Test method for {@link MiniRSA.RSA#endecrypt(long, long, int)}.
+     * Test method for {@link MiniRSA.RSA#modulo(long, long, long)}.
      */
     @Test
-    public void testEndecrypt() {
-        fail("Not yet implemented");
+    public void testModulo() {
+        
+        assertEquals(5, testRSA.modulo(5, 2, 10));
+        assertEquals(0, testRSA.modulo(5, 2, 5));
+        assertEquals(5, testRSA.modulo(5, 3, 20));
     }
-
-
+    
     /**
      * Test method for {@link MiniRSA.RSA#mod_inverse(long, long)}.
      */
@@ -72,18 +75,18 @@ public class RSATest {
     }
 
     /**
-     * Test method for {@link MiniRSA.RSA#modulo(long, long, long)}.
-     */
-    @Test
-    public void testModulo() {
-        fail("Not yet implemented");
-    }
-
-    /**
      * Test method for {@link MiniRSA.RSA#totient(long)}.
      */
     @Test
     public void testTotient() {
+        fail("Not yet implemented");
+    }
+    
+    /**
+     * Test method for {@link MiniRSA.RSA#endecrypt(long, long, int)}.
+     */
+    @Test
+    public void testEndecrypt() {
         fail("Not yet implemented");
     }
 
