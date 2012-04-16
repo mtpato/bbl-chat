@@ -81,7 +81,9 @@ public class RSATest {
      */
     @Test
     public void testTotient() {
-        fail("Not yet implemented");
+        assertEquals(1584, testRSA.totient(2345));
+        assertEquals(4, testRSA.totient(12));
+        assertEquals(792, testRSA.totient(851));
     }
     
     /**

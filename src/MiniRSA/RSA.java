@@ -119,8 +119,17 @@ public class RSA {
      * @return
      */
     long totient(long n) {
+               
+        int count = 0; 
+
+        for(int i = 1; i < n; i++) {
+            if(GCD(n,i) == 1) {
+                count++; 
+            }
+        }
+
+        return count; 
         
-        return -1;
     }
     
     
