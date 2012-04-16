@@ -1,7 +1,14 @@
 package MiniRSA;
 
-public class RSA {
+import java.util.Random;
 
+public class RSA {
+    
+    Random r = new Random();
+    
+    public RSA() {
+        
+    }
     
     /**
      * using the java.util.Random number generator, pick a random integer that is 
