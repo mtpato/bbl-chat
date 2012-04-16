@@ -55,7 +55,7 @@ public class ChatServer {
         System.out.println("Thanks for using BBL-Chat!");
         
         
-        System.out.println("done a");
+        //System.out.println("done a");
         
     }
 
