@@ -40,11 +40,13 @@ public class RSA {
     
     
     /**
-     * Computes the GCD of the two numbers a and b
+     * Computes the GCD of the two numbers a and b. this function 
+     * uses tail recursion and should should thus be made in to a 
+     * loop by the compiler to help avoid stack overflow.
      * 
      * @param a
      * @param b
-     * @return
+     * @return GCD
      */
     long GCD(long a, long b){
         long low;
@@ -72,7 +74,7 @@ public class RSA {
     
     
     /**
-     * calc the mo inverse base^-1 % m
+     * calc the mod inverse base^-1 % m
      * 
      * @param base
      * @param m
