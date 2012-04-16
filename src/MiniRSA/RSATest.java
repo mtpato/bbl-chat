@@ -14,11 +14,14 @@ import org.junit.Test;
  */
 public class RSATest {
 
+    
+    RSA testRSA;
     /**
      * @throws java.lang.Exception
      */
     @Before
     public void setUp() throws Exception {
+        testRSA = new RSA();
     }
 
     /**
@@ -27,7 +30,7 @@ public class RSATest {
     @Test
     public void testGCD() {
         
-        RSA testRSA = new RSA();
+        
         
         assertEquals(4, testRSA.GCD(12, 8));
         assertEquals(4, testRSA.GCD(8, 12));
@@ -39,10 +42,16 @@ public class RSATest {
 
     /**
      * Test method for {@link MiniRSA.RSA#coprime(int)}.
+     * 
      */
     @Test
     public void testCoprime() {
-        fail("Not yet implemented");
+        
+        assertEquals(1, testRSA.GCD(100, testRSA.coprime(100)));
+        assertEquals(1, testRSA.GCD(4, testRSA.coprime(4)));
+        assertEquals(1, testRSA.GCD(12321941, testRSA.coprime(12321941)));
+        
+        
     }
 
     /**

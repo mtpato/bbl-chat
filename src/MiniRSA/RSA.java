@@ -17,7 +17,7 @@ public class RSA {
      * @param x
      * @return a random coprime number to x
      */
-    long coprime(int x) {
+    long coprime(long x) {
         
         
         return -1;
