@@ -75,18 +75,24 @@ public class RSA {
     
 
     
-    
     /**
-     * calc the mod inverse base^-1 % m
+     * calc the mod inverse base^-1 % m. this is using brute force 
+     * dont understand the better solutions 
      * 
      * @param base
      * @param m
-     * @return
+     * @return 0 if there isnt one and the number if there is 
      */
     long mod_inverse(long base, long m) {
-        
-        
-        return -1;
+
+        for (int x = 1; x < m; x++) {
+            if ((base * x) % m == 1) {
+                return x;
+            }
+        }
+
+        return 0;
+
     }
     
     

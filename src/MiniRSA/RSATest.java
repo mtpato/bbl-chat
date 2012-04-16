@@ -71,7 +71,9 @@ public class RSATest {
      */
     @Test
     public void testMod_inverse() {
-        fail("Not yet implemented");
+        assertEquals(6, testRSA.mod_inverse(11, 13));
+        assertEquals(6, testRSA.mod_inverse(13, 11));
+        assertEquals(0, testRSA.mod_inverse(2, 14));
     }
 
     /**
