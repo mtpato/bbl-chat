@@ -87,6 +87,18 @@ public class RSATest {
     }
     
     /**
+     * 
+     */
+    @Test
+    public void testGetNthPrime() {
+        assertEquals(29, testRSA.getNthPrime(10));
+        assertEquals(1553, testRSA.getNthPrime(245));
+        assertEquals(193, testRSA.getNthPrime(44));
+        assertEquals(43, testRSA.getNthPrime(14));
+        assertEquals(2, testRSA.getNthPrime(1));
+    }
+    
+    /**
      * Test method for {@link MiniRSA.RSA#endecrypt(long, long, int)}.
      */
     @Test

@@ -6,8 +6,37 @@ public class RSA {
     
     Random r = new Random();
     
+    //these are for the key pairs.
+    // publicKey(e, c)
+    // privateKey(d, c)
+    long c;
+    long e;
+    long d;
+    
     public RSA() {
         
+    }
+    
+    long getNthPrime(long n) {
+        long count = 1;
+        
+        if (n == 1) return 2;
+        
+        int num = 2;
+              
+        while(count < n) {
+            for(int i = 2; i < num; i++) {
+                if(num % i == 0) {
+                    i = num;
+                } else if (i == num - 1){
+                    count ++;
+                }
+            }
+            num++;
+       
+        }
+        
+        return num - 1;
     }
     
     /**
