@@ -18,9 +18,13 @@ public class RSA {
      * @return a random coprime number to x
      */
     long coprime(long x) {
+        long n = r.nextLong();
         
+        while(GCD(x, n) != 1) {
+            n = r.nextLong();
+        }
         
-        return -1;
+        return n;
     }
     
     
@@ -40,9 +44,7 @@ public class RSA {
     
     
     /**
-     * Computes the GCD of the two numbers a and b. this function 
-     * uses tail recursion and should should thus be made in to a 
-     * loop by the compiler to help avoid stack overflow.
+     * Computes the GCD of the two numbers a and b. 
      * 
      * @param a
      * @param b
@@ -60,12 +62,18 @@ public class RSA {
             high = a;
         }
         
+        
+        
         long mod = high % low;
         
-        if(mod == 0) return low;
-        else {
-            return GCD(low, mod);
+        while(mod != 0) {
+            high = low;
+            low = mod;
+            
+            mod = high % low;
         }
+        
+        return low;
         
        
     }
