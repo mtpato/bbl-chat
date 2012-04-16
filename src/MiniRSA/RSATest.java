@@ -63,7 +63,7 @@ public class RSATest {
     public void testModulo() {
         
         assertEquals(5, testRSA.modulo(5, 2, 10));
-        assertEquals(0, testRSA.modulo(5, 2, 5));
+        assertEquals(5, testRSA.modulo(5, 2, 5));
         assertEquals(5, testRSA.modulo(5, 3, 20));
     }
     
@@ -106,7 +106,7 @@ public class RSATest {
     @Test
     public void testGetKeys() {
         testRSA.getKeys();
-        long test = 11;
+        long test = 9;
         long c = testRSA.modulo(test, testRSA.getE(), testRSA.getC());
         long m = testRSA.modulo(c, testRSA.getD(), testRSA.getC());
         

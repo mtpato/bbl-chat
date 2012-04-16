@@ -1,5 +1,6 @@
 package MiniRSA;
 
+import java.math.BigInteger;
 import java.util.Random;
 
 public class RSA {
@@ -18,11 +19,11 @@ public class RSA {
     }
     
      void getKeys() {
-        //long primeA = r.nextInt(100) + 1;
-        //long primeB = r.nextInt(100) + 1;
+        long primeA = r.nextInt(100) + 1;
+        long primeB = r.nextInt(100) + 1;
         
-        long primeA = 14;//testing
-        long primeB = 18;//testing
+        //long primeA = 14;//testing
+        //long primeB = 18;//testing
         
         while(primeB == primeA) primeB = r.nextInt(100) + 1; // incase they are the same 
         
@@ -34,8 +35,8 @@ public class RSA {
         
         c = a * b;
         long m = (a - 1) * (b - 1);
-        //e = coprime(m);
-        e = 451;//testing
+        e = coprime(m);
+        //e = 451;//testing
         d = mod_inverse(e, m);
         
         System.out.println("c = " + c );
@@ -185,11 +186,15 @@ public class RSA {
      * @param c
      * @return
      */
-    long modulo(long a, long b, long c) {
-        double pow = Math.pow(a, b);
-        System.out.println(pow % c);
-        return (long) pow % c;
+    long modulo(long value, long key, long c) {
+        BigInteger bigA = BigInteger.valueOf(value);
+        BigInteger bigB = BigInteger.valueOf(key);
+        BigInteger bigC = BigInteger.valueOf(c);
         
+        Integer i = 9;
+        
+        bigA.modPow(bigB, bigC);
+        return bigA.longValue();
         
         
     }
