@@ -9,19 +9,22 @@ public class RSA {
     //these are for the key pairs.
     // publicKey(e, c)
     // privateKey(d, c)
-    long c;
-    long e;
-    long d;
+    private long c;
+    private long e;
+    private long d;
     
     public RSA() {
-        getKeys();
+        
     }
     
-    private void getKeys() {
-        long primeA = r.nextInt(1000);
-        long primeB = r.nextInt(1000);
+     void getKeys() {
+        //long primeA = r.nextInt(100) + 1;
+        //long primeB = r.nextInt(100) + 1;
         
-        while(primeB == primeA) primeB = r.nextInt(1000); // incase they are the same 
+        long primeA = 14;//testing
+        long primeB = 18;//testing
+        
+        while(primeB == primeA) primeB = r.nextInt(100) + 1; // incase they are the same 
         
         long a = getNthPrime(primeA);
         long b = getNthPrime(primeB);
@@ -31,7 +34,8 @@ public class RSA {
         
         c = a * b;
         long m = (a - 1) * (b - 1);
-        e = coprime(m);
+        //e = coprime(m);
+        e = 451;//testing
         d = mod_inverse(e, m);
         
         System.out.println("c = " + c );
@@ -75,10 +79,12 @@ public class RSA {
      * @return a random coprime number to x
      */
     long coprime(long x) {
-        long n = r.nextLong();
+        long n = (r.nextLong() % x -1) + 1;
         
         while(GCD(x, n) != 1) {
-            n = r.nextLong();
+            n = (r.nextLong() % x - 1) + 1;
+            //System.out.println("this is n "+ n);
+            
         }
         
         return n;
@@ -180,7 +186,9 @@ public class RSA {
      * @return
      */
     long modulo(long a, long b, long c) {
-        return (long) (Math.pow(a, b) % c);
+        double pow = Math.pow(a, b);
+        System.out.println(pow % c);
+        return (long) pow % c;
         
         
         
@@ -205,6 +213,27 @@ public class RSA {
 
         return count; 
         
+    }
+
+    /**
+     * @return the c
+     */
+    public long getC() {
+        return c;
+    }
+
+    /**
+     * @return the e
+     */
+    public long getE() {
+        return e;
+    }
+
+    /**
+     * @return the d
+     */
+    public long getD() {
+        return d;
     }
     
     

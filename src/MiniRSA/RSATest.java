@@ -36,6 +36,7 @@ public class RSATest {
         assertEquals(4, testRSA.GCD(8, 12));
         assertEquals(8, testRSA.GCD(8, 400));
         assertEquals(1500, testRSA.GCD(39000, 4500));
+        assertEquals(1, testRSA.GCD(11, 13));
         
         
     }
@@ -49,7 +50,7 @@ public class RSATest {
         
         assertEquals(1, testRSA.GCD(100, testRSA.coprime(100)));
         assertEquals(1, testRSA.GCD(4, testRSA.coprime(4)));
-        assertEquals(1, testRSA.GCD(12321941, testRSA.coprime(12321941)));
+        assertEquals(1, testRSA.GCD(1232, testRSA.coprime(1232)));
         
         
     }
@@ -97,6 +98,21 @@ public class RSATest {
         assertEquals(193, testRSA.getNthPrime(44));
         assertEquals(43, testRSA.getNthPrime(14));
         assertEquals(2, testRSA.getNthPrime(1));
+    }
+    
+    /**
+     * Test method for {@link MiniRSA.RSA#endecrypt(long, long, int)}.
+     */
+    @Test
+    public void testGetKeys() {
+        testRSA.getKeys();
+        long test = 11;
+        long c = testRSA.modulo(test, testRSA.getE(), testRSA.getC());
+        long m = testRSA.modulo(c, testRSA.getD(), testRSA.getC());
+        
+        assertEquals(test, m);
+        
+        
     }
     
     /**
