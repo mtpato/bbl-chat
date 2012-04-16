@@ -47,8 +47,28 @@ public class RSA {
      * @return
      */
     long GCD(long a, long b){
-        return -1;
+        long low;
+        long high;
+ 
+        if(a < b) {
+            low = a;
+            high = b;
+        } else {
+            low = b;
+            high = a;
+        }
+        
+        long mod = high % low;
+        
+        if(mod == 0) return low;
+        else {
+            return GCD(low, mod);
+        }
+        
+       
     }
+    
+
     
     
     /**
@@ -73,6 +93,8 @@ public class RSA {
      * @return
      */
     long modulo(long a, long b, long c) {
+        
+        
         
         return -1;
     }
