@@ -14,9 +14,37 @@ public class RSA {
     long d;
     
     public RSA() {
-        
+        getKeys();
     }
     
+    private void getKeys() {
+        long primeA = r.nextInt(1000);
+        long primeB = r.nextInt(1000);
+        
+        while(primeB == primeA) primeB = r.nextInt(1000); // incase they are the same 
+        
+        long a = getNthPrime(primeA);
+        long b = getNthPrime(primeB);
+        
+        System.out.println("the " + primeA + "th prime is " + a);
+        System.out.println("the " + primeB + "th prime is " + b);
+        
+        c = a * b;
+        long m = (a - 1) * (b - 1);
+        e = coprime(m);
+        d = mod_inverse(e, m);
+        
+        System.out.println("c = " + c );
+        System.out.println("m = " + m );
+        System.out.println("e = " + e );
+        System.out.println("d = " + d );
+        System.out.println("Public key = (" + e + ", " + c + ")");
+        System.out.println("Private key = (" + d + ", " + c + ")");
+        
+        
+        
+    }
+
     long getNthPrime(long n) {
         long count = 1;
         
@@ -105,22 +133,40 @@ public class RSA {
 
     
     /**
-     * calc the mod inverse base^-1 % m. this is using brute force 
-     * dont understand the better solutions 
+     * calc the mod inverse base^-1 % m. this function was written using 
+     * info from http://mathworld.wolfram.com/ModularInverse.html and 
+     * http://www.algorithmist.com/index.php/Modular_inverse
      * 
      * @param base
      * @param m
-     * @return 0 if there isnt one and the number if there is 
+     * @return 
      */
     long mod_inverse(long base, long m) {
-
-        for (int x = 1; x < m; x++) {
-            if ((base * x) % m == 1) {
-                return x;
-            }
+        
+        long mod = m;
+        long result = 0;
+        long d = 1;
+        
+        while (base > 0) {
+         long t = mod / base;
+         long x = base;
+         base = mod % x;
+         mod = x;
+         x = d;
+         d = result - t * x;
+         result = x;
         }
+        
+        
+        result = result % m;
+        
+        if (result < 0){
+            result = (result + m) % m;
+        }
+        
+        
+        return result;
 
-        return 0;
 
     }
     
