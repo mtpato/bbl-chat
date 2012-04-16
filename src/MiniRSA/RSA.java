@@ -44,7 +44,7 @@ public class RSA {
     
     
     /**
-     * Computes the GCD of the two numbers a and b. 
+     * Computes the GCD of the two numbers a and b.  
      * 
      * @param a
      * @param b
@@ -61,8 +61,7 @@ public class RSA {
             low = b;
             high = a;
         }
-        
-        
+              
         
         long mod = high % low;
         
@@ -71,11 +70,8 @@ public class RSA {
             low = mod;
             
             mod = high % low;
-        }
-        
-        return low;
-        
-       
+        }        
+        return low;      
     }
     
 
