@@ -102,8 +102,7 @@ public class RSA {
      * @return
      */
     long endecrypt(long msg_or_cipher, long key, int c) {
-        
-        return -1;
+        return new Double(Math.pow(msg_or_cipher, (key % c))).intValue();
     }
     
     
